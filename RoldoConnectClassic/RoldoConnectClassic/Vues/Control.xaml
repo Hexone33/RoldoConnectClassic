@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:local="clr-namespace:FormsPinView.Core;assembly=FormsPinView.Core"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RoldoConnectClassic.Control"
+             Title="Control Moteur" NavigationPage.HasNavigationBar="false">
+    <ContentPage.Background>
+        <LinearGradientBrush EndPoint="0,1">
+            <GradientStop Color="#36D1DC" Offset="0.1"></GradientStop>
+            <GradientStop Color="#5B86E5"  Offset="1.0"></GradientStop>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <ContentPage.Content>
+        <StackLayout>
+            <ImageButton x:Name="RoldoConnect" IsEnabled="False" Scale="1" Padding="0,50,0,-20" BorderColor="Transparent" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"></ImageButton>
+            <ImageButton x:Name="ControlPanel" IsEnabled="False" Scale="1" Padding="0,0,0,20" BorderColor="Transparent" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"></ImageButton>
+            <ImageButton Background="transparent" BackgroundColor="Transparent" Scale="2" Margin="0,50,0,50" HorizontalOptions="Center" VerticalOptions="Center" x:Name="Open" IsVisible="false" Clicked="Open_Clicked"></ImageButton>
+            <ImageButton Background="transparent" BackgroundColor="Transparent" x:Name="Open2" Scale="2" Margin="0,50,0,50"   HorizontalOptions="Center" VerticalOptions="Center" IsVisible="true" Pressed="Open2_Pressed" Released="Open2_Released"></ImageButton>
+            <Label Text="Ouvrir le volet" TextColor="White" FontSize="12" FontAttributes="Italic,Bold" HorizontalOptions="Center"></Label>
+            <Switch IsToggled="false" VerticalOptions="Center" Margin="0,5,0,0" HorizontalOptions="Center" x:Name="SwitchBtn1" Toggled="SwitchBtn1_Toggled"></Switch>
+            <Label Text="Manuel" x:Name="OpenManu" TextColor="White" FontSize="12" FontAttributes="Italic,Bold" HorizontalOptions="Center"></Label>
+
+            <ImageButton Background="transparent" BackgroundColor="Transparent" x:Name="Close" Scale="2" Margin="0,50,0,50" HorizontalOptions="Center" VerticalOptions="Center" Pressed="Close_Pressed" Released="Close_Released"></ImageButton>
+            <ImageButton Background="transparent" BackgroundColor="Transparent" IsVisible="false" Scale="2" Margin="0,50,0,50"  HorizontalOptions="Center" VerticalOptions="Center" x:Name="Close2" Clicked="Close2_Clicked"></ImageButton>
+            <Label Text="Fermer le volet" TextColor="White" FontSize="12" FontAttributes="Italic,Bold" HorizontalOptions="Center"></Label>
+            <Switch IsToggled="False" x:Name="SwitchBtn2" Margin="0,5,0,0" HorizontalOptions="Center" Toggled="SwitchBtn2_Toggled"></Switch>
+            <Label Text="Manuel" x:Name="CloseManu" TextColor="White" FontSize="12" FontAttributes="Italic,Bold" HorizontalOptions="Center"></Label>
+            <Image x:Name="Wave" Aspect="AspectFit" Scale="1.35" RotationY="180" VerticalOptions="EndAndExpand"></Image>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FormsPinView.Core;assembly=FormsPinView.Core"
+             x:Class="RoldoConnectClassic.CodeLock"
+             xmlns:viewModel="clr-namespace:RoldoConnectClassic"
+             Title="Bienvenue, veuillez saisir votre code."
+             NavigationPage.HasNavigationBar="false" >
+    <ContentPage.Background>
+        <LinearGradientBrush EndPoint="0,1">
+            <GradientStop Color="#36D1DC" Offset="0.1"></GradientStop>
+            <GradientStop Color="#5B86E5"  Offset="1.0"></GradientStop>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <ContentPage.BindingContext>
+        <viewModel:MainPageViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <ImageButton x:Name="RoldoConnect" IsEnabled="False" Scale="1" Padding="50" BorderColor="Transparent" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"></ImageButton>
+
+        <local:PinView Error="PinView_Error"
+         HorizontalOptions="CenterAndExpand"
+         VerticalOptions="CenterAndExpand"
+         PinLength="{Binding PinLength}"
+         Validator="{Binding PinValidator}"
+         ErrorCommand="{Binding ErrorCommand}"
+         Success="PinView_Success" />
+
+    </StackLayout>
+
+</ContentPage>

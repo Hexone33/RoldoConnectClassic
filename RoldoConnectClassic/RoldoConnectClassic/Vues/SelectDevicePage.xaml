@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:local="clr-namespace:FormsPinView.Core;assembly=FormsPinView.Core"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RoldoConnectClassic.SelectDevicePage"
+             Title="Selection Moteur"
+             Padding="0" NavigationPage.HasNavigationBar="false">
+
+    <ContentPage.Background>
+        <LinearGradientBrush EndPoint="0,1">
+            <GradientStop Color="#36D1DC" Offset="0.1"></GradientStop>
+            <GradientStop Color="#5B86E5"  Offset="1.0"></GradientStop>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <ContentPage.Content>
+        <StackLayout>
+            <ImageButton x:Name="Scan" Scale="2" Padding="50" BorderColor="Transparent" BackgroundColor="Transparent" Clicked="Scan_Clicked" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"></ImageButton>
+            <ListView CachingStrategy="RecycleElement" x:Name="LvBondedDevices" ItemSelected="LvBondedDevices_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="Votre volet de sécurité" Detail="Roldo Connect Device"></TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Image x:Name="Wave" Aspect="AspectFit" Scale="1.35"></Image>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

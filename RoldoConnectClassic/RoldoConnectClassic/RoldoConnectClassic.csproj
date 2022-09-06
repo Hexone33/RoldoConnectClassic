@@ -1,0 +1,76 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\control.png" />
+    <None Remove="Images\p_ferme.png" />
+    <None Remove="Images\p_ouvert.png" />
+    <None Remove="Images\roldoname.png" />
+    <None Remove="Images\scanbtn.png" />
+    <None Remove="Images\status_selected.png" />
+    <None Remove="Images\wave.png" />
+    <None Remove="Images\XamarinLogo.png" />
+    <None Remove="roldoname.png" />
+    <None Remove="scanbtn.png" />
+    <None Remove="wave.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\control.png" />
+    <EmbeddedResource Include="Images\p_ferme.png" />
+    <EmbeddedResource Include="Images\p_ouvert.png" />
+    <EmbeddedResource Include="Images\roldoname.png" />
+    <EmbeddedResource Include="Images\scanbtn.png" />
+    <EmbeddedResource Include="Images\status_selected.png" />
+    <EmbeddedResource Include="Images\wave.png" />
+    <EmbeddedResource Include="Images\XamarinLogo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Fody" Version="6.6.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="FormsPinView" Version="2.0.0" />
+    <PackageReference Include="FreshMvvm" Version="4.0.1" />
+    <PackageReference Include="LiveXAML" Version="2.1.73" />
+    <PackageReference Include="Plugin.BLE" Version="2.2.0-pre5" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.4.1" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Vues\CodeLock.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Vues\Control.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Vues\SelectDevicePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Xamarin.iOS">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\Xamarin.iOS\v1.0\Xamarin.iOS.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
