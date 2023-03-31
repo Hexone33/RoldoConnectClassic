@@ -1,15 +1,10 @@
 ﻿using Plugin.BLE;
 using Plugin.BLE.Abstractions;
 using Plugin.BLE.Abstractions.Contracts;
-using Plugin.BLE.Abstractions.Exceptions;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using UIKit;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -27,6 +22,7 @@ namespace RoldoConnectClassic
 
             Transporter.ble = CrossBluetoothLE.Current;
             Transporter.adapter = CrossBluetoothLE.Current.Adapter;
+
 
             if (Device.RuntimePlatform == Device.iOS)
             {
@@ -48,29 +44,40 @@ namespace RoldoConnectClassic
 
         private async void Scan_Clicked(object sender, EventArgs e)
         {
-            var scanFilterOptions = new ScanFilterOptions();
-
-            //await DisplayAlert("Statut :", ble.State.ToString(), "Close");
-
-            Transporter.adapter.ScanTimeout = 1000;
-
-
-            localDeviceList.Clear();
-
-            Transporter.adapter.DeviceDiscovered += (s, a) =>
+            var status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
+            if (status != PermissionStatus.Granted)
             {
-                if (a.Device.Name != null && a.Device.Name.ToLower().Contains("z"))
+                status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
+            }
+            if (status == PermissionStatus.Granted)
+            {
+                var scanFilterOptions = new ScanFilterOptions();
+
+                //await DisplayAlert("Statut :", ble.State.ToString(), "Close");
+
+                Transporter.adapter.ScanTimeout = 1000;
+                var state = Transporter.ble.State;
+                localDeviceList.Clear();
+
+                Transporter.adapter.DeviceDiscovered += (s, a) =>
                 {
-                    //IDevice renamed = a.Device;
-                    //renamed.Name = "Roldo Connect";
-                    if(!localDeviceList.Contains(a.Device))
-                        localDeviceList.Add(a.Device);
-                }
-            };
+                    if (a.Device.Name != null && a.Device.Name.ToLower().Contains("z"))
+                    {
+                        //IDevice renamed = a.Device;
+                        //renamed.Name = "Roldo Connect";
+                        if (!localDeviceList.Contains(a.Device))
+                            localDeviceList.Add(a.Device);
+                    }
+                };
 
-            await Transporter.adapter.StartScanningForDevicesAsync();
+                await Transporter.adapter.StartScanningForDevicesAsync();
 
-            RefreshList();
+                RefreshList();
+            }
+            else
+            {
+                bool result = await DisplayAlert("Attention !", "Veuillez-accorder l'accès à votre localisation dans vos paramètres avant de pouvoir scanner.", "Oui", "Non");
+            }
         }
 
         public void RefreshList()

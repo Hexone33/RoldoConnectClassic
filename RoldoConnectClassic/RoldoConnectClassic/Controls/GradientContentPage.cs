@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using FFImageLoading.Forms;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
